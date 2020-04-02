@@ -99,7 +99,8 @@ state_cases_plot_log <- curve_df %>%
         legend.text = element_text(size = rel(1)))
 # Get on non-log scale
 state_cases_plot <- state_cases_plot_log +
-  scale_y_continuous(trans = "identity")
+  scale_y_continuous(trans = "identity") +
+  labs(y = "Cumulative number of cases")
 
 
 # State deaths plot
@@ -117,7 +118,7 @@ state_deaths_plot_log <- curve_df %>%
             color = "firebrick",
             size = 2.1) +
   scale_y_continuous(trans = "log10", labels = scales::comma) +
-  facet_wrap(~state, ncol = 5) +
+  facet_wrap(~state, ncol = 6) +
   labs(x = "Days since 10th confirmed case",
        y = "Cumulative number of deaths (log10 scale)",
        title = "Cumulative Number of Reported Deaths of COVID-19: US States and Territories",
@@ -138,7 +139,8 @@ state_deaths_plot_log <- curve_df %>%
         legend.text = element_text(size = rel(1)))
 
 state_deaths_plot <- state_deaths_plot_log +
-  scale_y_continuous(trans = "identity")
+  scale_y_continuous(trans = "identity") +
+  labs(y = "Cumulative number of deaths")
 
 # Save output
 ggsave(plot = state_cases_plot_log,
